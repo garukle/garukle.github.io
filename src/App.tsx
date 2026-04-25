@@ -28,7 +28,7 @@ export default function App() {
             <CurrTab label={TAB_LABELS[currPage] ?? 'MAIN MENU'}/>
           </div>
           <div className='relative z-10 flex flex-col gap-1 pt-2'>
-            {currPage === 'home' && <SectionTabs currPage={currPage} onSelect={setCurrPage} onHover={setCurrDesc}/>}
+            {currPage === 'home' && <SectionTabs onSelect={setCurrPage} onHover={setCurrDesc}/>}
           </div>
         </div>
         <BottomBar isHome={isHome} currDesc={currDesc} siteName='BRENDAN EMERALD' onBack={() => setCurrPage('home')}/>

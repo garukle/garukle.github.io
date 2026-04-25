@@ -6,7 +6,7 @@ const TABS = [
     {id: 'off', label: 'SWITCH OFF', color: 'white', desc: 'Put away the POKeNAV.'}
 ]
 
-export default function SectionTabs({currPage, onSelect, onHover}: {currPage: string, onSelect: (id: string) => void, onHover: (desc: string | null) => void}) {
+export default function SectionTabs({onSelect, onHover}: {onSelect: (id: string) => void, onHover: (desc: string | null) => void}) {
     return(
         <>
             {TABS.map(tab => (

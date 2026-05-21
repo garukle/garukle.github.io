@@ -1,22 +1,27 @@
-const TABS = [
-    {id: 'map', label: 'HOENN MAP', color: 'green', desc: 'Check the map of the HOENN region.'},
-    {id: 'cond', label: 'CONDITION', color: 'blue', desc: 'Check POKeMON in detail.'},
-    {id: 'call', label: 'MATCH CALL', color: 'red', desc: 'Call a registered TRAINER.'},
-    {id: 'rib', label: 'RIBBONS', color: 'pink', desc: 'Check obtained RIBBONS.'},
-    {id: 'off', label: 'SWITCH OFF', color: 'white', desc: 'Put away the POKeNAV.'}
-]
+import { menuItems } from "../data/menuItems"
+import type { MenuItem } from "../types"
 
-export default function SectionTabs({onSelect, onHover}: {onSelect: (id: string) => void, onHover: (desc: string | null) => void}) {
+interface Props {
+    onSelect: (id: string) => void
+    onHover: (item: MenuItem) => void
+    onLeave: () => void
+}
+
+export default function SectionTabs({onSelect, onHover, onLeave}: Props) {
     return(
-        <>
-            {TABS.map(tab => (
-                <div key={tab.id} onClick={() => onSelect(tab.id)} onMouseEnter={() => onHover(tab.desc)} onMouseLeave={() => onHover(null)} className="flex items-center gap-2 px-3 py-1.5 border border-r-0 rounded-1-sm cursor-pointer min-w-30 hover:bg-gray-400 transition-colors duration-100">
-                    <div className="w-1.75 h-1.75 rounded-[1px] shrink-0" style={{background: tab.color}}/>
-                    <span className="text-[5px] tracking-wide whitespace-nowrap">
-                        {tab.label}
-                    </span>
-                </div>
+        <div className="fixed right-0 flex flex-col gap-2 flex-1 justify-center">
+            {menuItems.slice(0, -1).map(item => (
+                <button className="flex items-center gap-3 px-4 pr-30 py-1 border-y-4 border-l-4 cursor-pointer transition-all duration-100 hover:translate-x-1 bg-amber-300 border-b-amber-400 border-t-amber-200 border-l-amber-200 text-white font-semibold text-shadow-lg" key={item.id} onMouseEnter={() => onHover(item)} onMouseLeave={onLeave} onClick={() => {onLeave(); onSelect(item.id)}}>
+                    <span className="w-4 h-4 border-2 shrink border-b-amber-200 border-r-amber-200" style={{background: item.color, borderLeftColor: 'rgba(0, 0, 0, 0.25)', borderTopColor: 'rgba(0, 0, 0, 0.25)'}}/>
+                    {item.label}
+                </button>
             ))}
-        </>
+            {menuItems.slice(-1).map(item => (
+                <button className="flex items-center gap-3 px-4 pr-30 py-1 border-y-4 border-l-4 cursor-pointer transition-all duration-100 hover:translate-x-1 bg-olive-400 border-b-olive-500 border-l-olive-300 border-t-olive-300 text-white font-semibold text-shadow-lg" key={item.id} onMouseEnter={() => onHover(item)} onMouseLeave={onLeave} onClick={() => {onLeave(); onSelect(item.id)}}>
+                    <span className="w-4 h-4 border-2 shrink border-b-olive-300 border-r-olive-300 border-t-olive-500 border-l-olive-500" style={{background: 'white'}}/>
+                    {item.label}
+                </button>
+            ))}
+        </div>
     )
 }

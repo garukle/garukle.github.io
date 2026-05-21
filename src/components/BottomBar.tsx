@@ -1,22 +1,15 @@
-export default function BottomBar({isHome, currDesc, siteName, onBack}: {isHome: boolean, currDesc: string | null, siteName: string, onBack: () => void}) {
-    if(isHome) {
-        return(
-            <div className="border-t px-3 py-2 flex items-center gap-2 min-h-9.5">
-                <span className={`font-mono text-[10px] tracking-wide ${currDesc ? '' : 'italic'}`}>
-                    {currDesc ?? 'Select a tab.'}
-                </span>
-            </div>
-        )
-    }
+interface Props {
+    text: string | null
+}
 
+export default function BottomBar({text}: Props) {
     return(
-        <div className="border-t px-3 py-1.25 flex justify-between">
-            <button onClick={onBack} className="text-[7px] tracking-wide cursor-pointer bg-transparent border-none">
-                CANCEL
-            </button>
-            <span className="text-[7px] tracking-widest">
-                {siteName}
-            </span>
+        <div className="fixed bottom-0 left-0 right-0 flex justify-center py-4 px-4">
+            <div className="px-6 py-3 flex items-center justify-center bg-olive-100 rounded-xs border-3 border-olive-500 min-w-80 max-w-150">
+                <p className="font-medium">
+                    {text ?? 'Welcome! Hover over a menu item...'}
+                </p>
+            </div>
         </div>
     )
 }

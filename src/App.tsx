@@ -1,38 +1,62 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import TopBar from './components/TopBar'
+import MainMenuTab from './components/MainMenuTab'
 import SectionTabs from './components/SectionTabs'
-import CurrTab from './components/CurrTab'
 import BottomBar from './components/BottomBar'
-
-const TAB_LABELS: Record<string, string> = {
-  home: 'MAIN MENU',
-  map: 'HOENN MAP',
-  cond: 'CONDITION',
-  call: 'MATCH CALL',
-  rib: 'RIBBONS',
-}
+import MapPage from './pages/MapPage'
+import BlogPage from './pages/BlogPage'
+import ProjectsPage from './pages/ProjectsPage'
+import AchievementsPage from './pages/AchievementsPage'
+import AboutPage from './pages/AboutPage'
+import type {MenuItem} from './types'
 
 export default function App() {
   const [currPage, setCurrPage] = useState<string>('home')
-  const [currDesc, setCurrDesc] = useState<string | null>(null)
+  const [hoveredItem, setHoveredItem] = useState<MenuItem | null>(null)
   const isHome = currPage === 'home'
+  
+  const goHome = () => {
+    setCurrPage('home')
+    setHoveredItem(null)
+  }
+
+  const handleSelect = (id: string) => {
+    setHoveredItem(null)
+    setCurrPage(id)
+  }
+
+  const renderPage = () => {
+    switch(currPage) {
+      case 'map': return <MapPage onBack={goHome}/>
+      case 'blog': return <BlogPage onBack={goHome}/>
+      case 'projects': return <ProjectsPage onBack={goHome}/>
+      case 'achievements': return <AchievementsPage onBack={goHome}/>
+      case 'about': return <AboutPage onBack={goHome}/>
+      default: return null
+    }
+  }
+
+  useEffect(() => {
+    document.title = 'Main Menu'
+    return () => {document.title = 'Main Menu'}
+  }, [])
 
   return(
-    <main className='w-full h-screen flex flex-col'>
-      <div className='w-full h-screen flex flex-col'>
-        {isHome && <TopBar/>}
+    <main className='min-h-screen default-bg flex flex-col'>
+      {isHome && <TopBar/>}
+      {isHome && <MainMenuTab hoveredItem={hoveredItem}/>}
+      {isHome ? (
+        <>
+          <div className='flex gap-3 p-4 min-h-80'>
+            <div className='flex-5'/>
+            <SectionTabs onSelect={handleSelect} onHover={setHoveredItem} onLeave={() => setHoveredItem(null)}/>
+          </div>
 
-        <div className='flex flex-1 relative'>
-          <div className='absolute inset-0'/>
-          <div className='relative z-10 flex-1 flex flex-col p-2 gap-2'>
-            <CurrTab label={TAB_LABELS[currPage] ?? 'MAIN MENU'}/>
-          </div>
-          <div className='relative z-10 flex flex-col gap-1 pt-2'>
-            {currPage === 'home' && <SectionTabs onSelect={setCurrPage} onHover={setCurrDesc}/>}
-          </div>
-        </div>
-        <BottomBar isHome={isHome} currDesc={currDesc} siteName='BRENDAN EMERALD' onBack={() => setCurrPage('home')}/>
-      </div>
+          <BottomBar text={hoveredItem?.description ?? null}/>
+        </>
+      ) : (
+        renderPage()
+      )}
     </main>
   )
 }

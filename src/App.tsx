@@ -44,7 +44,7 @@ export default function App() {
   return(
     <main className='min-h-screen default-bg flex flex-col'>
       {isHome && <TopBar/>}
-      {isHome && <MainMenuTab hoveredItem={hoveredItem}/>}
+      {isHome && <MainMenuTab hoveredItem={hoveredItem} top='mt-34'/>}
       {isHome ? (
         <>
           <div className='flex gap-3 p-4 min-h-80'>

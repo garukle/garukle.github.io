@@ -13,7 +13,7 @@ interface Props {
 export default function PageSkeleton({label, color, borderTop, borderRight, borderBottom, onBack, children}: Props) {
     return (
         <div className="min-h-screen default-bg flex flex-col">
-            <MainMenuTab hoveredItem={null} overrideLabel={label} overrideColor={color} borderTop={borderTop} borderRight={borderRight} borderBottom={borderBottom}/>
+            <MainMenuTab hoveredItem={null} overrideLabel={label} overrideColor={color} borderTop={borderTop} borderRight={borderRight} borderBottom={borderBottom} top=""/>
             <div className="flex-1">
                 {children}
             </div>

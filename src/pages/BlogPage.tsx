@@ -12,7 +12,7 @@ export default function BlogPage({onBack}: Props) {
     }, [])
 
     return (
-        <PageSkeleton label="BLOG" color="var(--color-blue-400)" borderTop="var(--color-blue-300)" borderRight="var(--color-blue-500)" borderBottom="var(--color-blue-500)" onBack={onBack}>
+        <PageSkeleton label="BLOG" color="#6850d8" borderTop="#c0b0f8" borderRight="#5040a0" borderBottom="#5040a0" onBack={onBack}>
             <p>Coming Soon!</p>
         </PageSkeleton>
     )

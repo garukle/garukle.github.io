@@ -1,4 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 @import "tailwindcss";
+
+* {
+  font-family: 'Jersey 10', monospace;
+  font-weight: lighter;
+}
 
 @font-face {
   font-family: 'Material Symbols Outlined';
@@ -18,10 +26,28 @@
   font-style: normal;
 }
 
-.default-bg {
-    background-color: #fafafa;
-    background-image: radial-gradient(circle, rgba(7, 197, 109, 0.18) 2px, transparent 1px);
-    background-size: 12px 12px;
+@keyframes tabPulse {
+  0%, 100% { filter: brightness(1) saturate(1); }
+  50% { filter: brightness(1.1) saturate(0.7); }
+}
+
+.tab-pulse {
+  animation: tabPulse 0.75s ease-in-out infinite;
+}
+
+@keyframes bgScroll {
+  from { background-position: 0 0; }
+  to { background-position: calc(-4 * var(--gp)) 0; }
+}
+
+.pokenav-bg {
+  background-color: #d8f8f0;
+  background-image:
+    linear-gradient(to right, #f8f8f8 calc(2 * var(--gp)), transparent calc(2 * var(--gp))),
+    linear-gradient(to bottom, #f8f8f8 calc(2 * var(--gp)), transparent calc(2 * var(--gp)));
+  background-size: calc(4 * var(--gp)) calc(4 * var(--gp));
+  background-position: 0 calc(1 * var(--gp));
+  animation: bgScroll 0.1s linear infinite;
 }
 
 .material-symbols-outlined {

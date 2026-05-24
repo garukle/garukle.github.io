@@ -23,7 +23,7 @@ export default function AboutPage({onBack}: Props) {
     }, [])
 
     return (
-        <PageSkeleton label="ABOUT ME" color="var(--color-olive-400)" borderTop="var(--color-olive-300)" borderRight="var(--color-olive-500)" borderBottom="var(--color-olive-500)" onBack={onBack}>
+        <PageSkeleton label="ABOUT ME" color="#b0a878" borderTop="#d8d0a0" borderRight="#807848" borderBottom="#807848" onBack={onBack}>
             <div className="flex gap-10 p-10 pb-24">
                 <div className="flex flex-col items-center gap-4 w-64 shrink-0 pt-11">
                     <div className="w-48 h-48 overflow-hidden border-4 border-olive-500 bg-olive-400 flex items-center justify-center relative">

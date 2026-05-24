@@ -12,7 +12,7 @@ export default function MapPage({onBack}: Props) {
     }, [])
 
     return (
-        <PageSkeleton label="HOENN MAP" color="var(--color-green-400)" borderTop="var(--color-green-300)" borderRight="var(--color-green-500)" borderBottom="var(--color-green-500)" onBack={onBack}>
+        <PageSkeleton label="HOENN MAP" color="#20c068" borderTop="#90f860" borderRight="#488838" borderBottom="#488838" onBack={onBack}>
             <p>Coming Soon!</p>
         </PageSkeleton>
     )

@@ -34,7 +34,7 @@ export default function ProjectPage({onBack}: Props) {
     }, [])
 
     return (
-        <PageSkeleton label="PROJECTS" color="var(--color-red-400)" borderTop="var(--color-red-300)" borderRight="var(--color-red-500)" borderBottom="var(--color-red-500)" onBack={onBack}>
+        <PageSkeleton label="PROJECTS" color="#f84020" borderTop="#f89058" borderRight="#b00000" borderBottom="#b00000" onBack={onBack}>
             <div className="flex h-[calc(100vh-8rem)] pt-4 pr-4 pb-16 gap-4">
 
                 {/* LEFT PANEL */}

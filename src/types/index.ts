@@ -3,8 +3,8 @@ export interface MenuItem {
     label: string
     description: string
     color: string
-    borderColorA: string
-    borderColorB: string
+    squareDark: string
+    squareLight: string
     tabStyle?: 'primary' | 'muted'
 }
 
@@ -27,4 +27,15 @@ export interface Project {
     postUrl?: string
     status: ProjectStatus
     sections: ProjectSection[]
+}
+
+export interface Achievement {
+    id: string
+    name: string
+    dateEarned: string
+    issuer: string
+    image: string
+    icon: string
+    description: string
+    category: 'cert' | 'academic' | 'competition' | 'other'
 }

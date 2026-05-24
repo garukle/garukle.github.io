@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import TopBar from './components/TopBar'
-import MainMenuTab from './components/MainMenuTab'
+import PageTab from './components/PageTab'
 import SectionTabs from './components/SectionTabs'
-import BottomBar from './components/BottomBar'
+import BottomBox from './components/BottomBox'
 import MapPage from './pages/MapPage'
 import BlogPage from './pages/BlogPage'
 import ProjectsPage from './pages/ProjectsPage'
@@ -42,21 +42,28 @@ export default function App() {
   }, [])
 
   return(
-    <main className='min-h-screen default-bg flex flex-col'>
-      {isHome && <TopBar/>}
-      {isHome && <MainMenuTab hoveredItem={hoveredItem} top='mt-34'/>}
-      {isHome ? (
-        <>
-          <div className='flex gap-3 p-4 min-h-80'>
-            <div className='flex-5'/>
+    <main className='min-h-screen bg-black flex items-center justify-center'>
+      <div
+        className="relative overflow-hidden pokenav-bg"
+        style={{
+          aspectRatio: '3 / 2',
+          maxHeight: '100vh',
+          maxWidth: 'calc(100vh * 1.5)',
+          width: '100%',
+          ['--gp' as string]: 'calc(min(100vw / 240, 100vh / 160))',
+        }}
+      >
+        {isHome && <TopBar/>}
+        {isHome && <PageTab hoveredItem={hoveredItem}/>}
+        {isHome ? (
+          <>
             <SectionTabs onSelect={handleSelect} onHover={setHoveredItem} onLeave={() => setHoveredItem(null)}/>
-          </div>
-
-          <BottomBar text={hoveredItem?.description ?? null}/>
-        </>
-      ) : (
-        renderPage()
-      )}
+            <BottomBox text={hoveredItem?.description ?? null}/>
+          </>
+        ) : (
+          renderPage()
+        )}
+      </div>
     </main>
   )
 }

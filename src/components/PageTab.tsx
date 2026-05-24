@@ -8,6 +8,8 @@ interface Props {
   borderRight?: string
   borderBottom?: string
   topOffset?: number
+  entering?: boolean
+  exiting?: boolean
 }
 
 export default function PageTab({
@@ -16,7 +18,9 @@ export default function PageTab({
   borderTop,
   borderRight,
   borderBottom,
-  topOffset = 32
+  topOffset = 32,
+  entering,
+  exiting
 }: Props) {
   const s = (n: number) => `calc(${n} * var(--gp))`
   const label = overrideLabel ?? 'MAIN MENU'
@@ -27,7 +31,7 @@ export default function PageTab({
 
   return (
     <div
-      className="absolute left-0"
+      className={`absolute left-0 ${exiting ? 'pagetab-exit' : entering ? 'pagetab-enter' : ''}`}
       style={{
         top: s(topOffset),
         width: s(88),

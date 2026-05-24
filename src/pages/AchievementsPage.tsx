@@ -5,6 +5,8 @@ import { achievements } from "../data/achievements";
 
 interface Props {
     onBack: () => void
+    entering?: boolean
+    exiting?: boolean
 }
 
 const categoryIcon: Record<Achievement['category'], string> = {
@@ -14,7 +16,7 @@ const categoryIcon: Record<Achievement['category'], string> = {
     other: 'star'
 }
 
-export default function AchievementsPage({onBack}: Props) {
+export default function AchievementsPage({onBack, entering, exiting}: Props) {
     const [hovered, setHovered] =  useState<Achievement | null>(null)
 
     useEffect(() => {
@@ -23,7 +25,7 @@ export default function AchievementsPage({onBack}: Props) {
     }, [])
 
     return (
-        <PageSkeleton label="ACHIEVEMENTS" color="#f06868" borderTop="#f8a8a0" borderRight="#c84840" borderBottom="#c84840" onBack={onBack}>
+        <PageSkeleton label="ACHIEVEMENTS" color="#f06868" borderTop="#f8a8a0" borderRight="#c84840" borderBottom="#c84840" onBack={onBack} entering={entering} exiting={exiting}>
             <div className="flex h-[calc(100vh-8rem)] pt-4 pr-4 pb-16 gap-4">
                 <div className="flex flex-col w-64 shrink-0 gap-3 ml-2 mt-16">
                     <div className="border-2 border-pink-500 bg-pink-400 px-4 py-2 flex items-center justify-center">

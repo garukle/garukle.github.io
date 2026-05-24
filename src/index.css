@@ -26,6 +26,64 @@
   font-style: normal;
 }
 
+@keyframes slideUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100%); opacity: 0; }
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideInBottom {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes slideOutBottom {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(100%); opacity: 0; }
+}
+
+.topbar-exit { animation: slideUp 0.4s ease-in forwards; }
+.topbar-enter { animation: slideDown 0.4s ease-out forwards; }
+.bottombar-enter { animation: slideInBottom 0.4s ease-out forwards; }
+.bottombar-exit { animation: slideOutBottom 0.4s ease-in forwards; }
+
+@keyframes slideOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
+@keyframes slideInRight {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.sectiontabs-exit { animation: slideOutRight 0.4s ease-in forwards; }
+.sectiontabs-enter { animation: slideInRight 0.4s ease-out forwards; }
+
+@keyframes slideOutLeft {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(-100%); opacity: 0; }
+}
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.pagetab-exit { animation: slideOutLeft 0.4s ease-in forwards; }
+.pagetab-enter { animation: slideInLeft 0.4s ease-out forwards; }
+
+@keyframes fadeToBlack {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fadeFromBlack {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fade-to-black { animation: fadeToBlack 0.3s ease-in forwards; }
+.fade-from-black { animation: fadeFromBlack 0.3s ease-out forwards; }
+
 @keyframes tabPulse {
   0%, 100% { filter: brightness(1) saturate(1); }
   50% { filter: brightness(1.1) saturate(0.7); }

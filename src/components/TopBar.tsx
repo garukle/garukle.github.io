@@ -1,9 +1,14 @@
-export default function TopBar() {
+interface Props {
+  entering?: boolean
+  exiting?: boolean
+}
+
+export default function TopBar({entering, exiting}: Props) {
   const s = (n: number) => `calc(${n} * var(--gp))`
 
   return (
     <div 
-      className="absolute left-0 right-0 top-0" 
+      className={`absolute left-0 right-0 top-0 ${exiting ? 'topbar-exit' : entering ? 'topbar-enter' : ''}`} 
       style={{ height: s(32) }}
     >
       <div 

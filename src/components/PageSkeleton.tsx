@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PageTab from './PageTab'
 
 interface Props {
@@ -8,10 +9,13 @@ interface Props {
   borderBottom: string
   onBack: () => void
   children: React.ReactNode
+  entering?: boolean
+  exiting?: boolean
 }
 
-export default function PageSkeleton({ label, color, borderTop, borderRight, borderBottom, onBack, children }: Props) {
+export default function PageSkeleton({ label, color, borderTop, borderRight, borderBottom, onBack, children, entering, exiting }: Props) {
   const s = (n: number) => `calc(${n} * var(--gp))`
+  const [hovering, setHovering] = useState(false)
 
   return (
     <div className="absolute inset-0">
@@ -22,6 +26,8 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
         borderRight={borderRight}
         borderBottom={borderBottom}
         topOffset={0}
+        exiting={exiting}
+        entering={entering}
       />
 
       {/* Page content */}
@@ -34,7 +40,7 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
 
       {/* Bottom bar */}
       <div 
-        className="absolute left-0 right-0 bottom-0 overflow-hidden" 
+        className={`absolute left-0 right-0 bottom-0 overflow-hidden ${entering ? 'bottombar-enter' : exiting ? 'bottombar-exit' : ''}`} 
         style={{ height: s(16) }}
       >
         <div 
@@ -48,21 +54,23 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
 
         {/* B button */}
         <button
-          className="absolute flex items-center justify-center rounded-full"
+          className="absolute flex items-center justify-center rounded-full transition-all"
           style={{
             left: s(8),
             top: '50%',
-            transform: 'translateY(-50%)',
+            transform: `translateY(-50%) ${hovering ? 'scale(1.1)' : 'scale(1)'}`,
             width: s(7),
             height: s(7),
             border: `${s(1)} solid white`,
             color: 'white',
-            fontSize: s(5),
+            fontSize: s(7),
             lineHeight: 1,
             textShadow: `${s(0.75)} 0 0 rgba(0,0,0,1)`,
             boxShadow: `${s(0.75)} 0 0 rgba(0,0,0,1)`,
           }}
           onClick={onBack}
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
         >
           B
         </button>
@@ -75,7 +83,7 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
             top: s(4),
             bottom: s(3),
             color: 'white',
-            fontSize: s(5),
+            fontSize: s(10),
             textShadow: `${s(0.75)} 0 0 rgba(0,0,0,1)`,
           }}
         >
@@ -90,7 +98,7 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
             top: s(5),
             bottom: s(4),
             color: 'white',
-            fontSize: s(5),
+            fontSize: s(10),
             textShadow: '1px 1px 0 rgba(0,0,0,0.4)',
           }}
         >

@@ -1,7 +1,11 @@
 import PageSkeleton from "../components/PageSkeleton";
 import { useEffect } from "react";
 
-interface Props {onBack: () => void}
+interface Props {
+    onBack: () => void
+    entering?: boolean
+    exiting?: boolean
+}
 
 const links = [
     {icon: 'email', label: 'Email', href: 'mailto:ravipgunasekara@gmail.com'},
@@ -16,14 +20,14 @@ const ongoing = [
     {icon: 'menu_book', label: 'Reading', value: ['The Final Empire']}
 ]
 
-export default function AboutPage({onBack}: Props) {
+export default function AboutPage({onBack, entering, exiting}: Props) {
     useEffect(() => {
         document.title = 'About Me'
         return () => {document.title = 'Main Menu'}
     }, [])
 
     return (
-        <PageSkeleton label="ABOUT ME" color="#b0a878" borderTop="#d8d0a0" borderRight="#807848" borderBottom="#807848" onBack={onBack}>
+        <PageSkeleton label="ABOUT ME" color="#b0a878" borderTop="#d8d0a0" borderRight="#807848" borderBottom="#807848" onBack={onBack} entering={entering} exiting={exiting}>
             <div className="flex gap-10 p-10 pb-24">
                 <div className="flex flex-col items-center gap-4 w-64 shrink-0 pt-11">
                     <div className="w-48 h-48 overflow-hidden border-4 border-olive-500 bg-olive-400 flex items-center justify-center relative">

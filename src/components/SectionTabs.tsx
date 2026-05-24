@@ -6,9 +6,11 @@ interface Props {
   onSelect: (id: string) => void
   onHover: (item: MenuItem) => void
   onLeave: () => void
+  entering?: boolean
+  exiting?: boolean
 }
 
-export default function SectionTabs({ onSelect, onHover, onLeave }: Props) {
+export default function SectionTabs({ onSelect, onHover, onLeave, entering, exiting }: Props) {
   const s = (n: number) => `calc(${n} * var(--gp))`
   const [pulsed, setPulsed] = useState<string | null>(null)
   const tabStartTop = 34
@@ -28,7 +30,7 @@ export default function SectionTabs({ onSelect, onHover, onLeave }: Props) {
   }
 
   return (
-    <div>
+    <div className={`${exiting ? 'sectiontabs-exit' : entering ? 'sectiontabs-enter' : ''}`}>
       {menuItems.map((item, i) => {
         const top = tabStartTop + i * (tabHeight + tabGap)
         const isHovered = pulsed === item.id

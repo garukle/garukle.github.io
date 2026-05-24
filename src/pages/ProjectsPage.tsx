@@ -5,6 +5,8 @@ import { projects } from "../data/projects";
 
 interface Props {
     onBack: () => void
+    entering?: boolean
+    exiting?: boolean
 }
 
 type Filter = 'ALL' | 'CS' | 'ART'
@@ -15,7 +17,7 @@ const statusIcon: Record<ProjectStatus, {icon: string; color: string; label: str
     'abandoned': {icon: 'remove_circle', color: 'text-red-800', label: 'Abandoned'}
 }
 
-export default function ProjectPage({onBack}: Props) {
+export default function ProjectPage({onBack, entering, exiting}: Props) {
     const [filter, setFilter] = useState<Filter>('ALL')
     const [hovered, setHovered] = useState<Project | null>(null)
     const [selected, setSelected] = useState<Project | null>(null)
@@ -34,7 +36,7 @@ export default function ProjectPage({onBack}: Props) {
     }, [])
 
     return (
-        <PageSkeleton label="PROJECTS" color="#f84020" borderTop="#f89058" borderRight="#b00000" borderBottom="#b00000" onBack={onBack}>
+        <PageSkeleton label="PROJECTS" color="#f84020" borderTop="#f89058" borderRight="#b00000" borderBottom="#b00000" onBack={onBack} entering={entering} exiting={exiting}>
             <div className="flex h-[calc(100vh-8rem)] pt-4 pr-4 pb-16 gap-4">
 
                 {/* LEFT PANEL */}

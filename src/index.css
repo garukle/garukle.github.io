@@ -204,6 +204,15 @@
   animation: bgScroll 0.1s linear infinite;
 }
 
+/* Can fix this later to only stripe till line 16, then implement the two dashed lines around filter box. For a later day though! */
+.projects-bg {
+  background: repeating-linear-gradient(
+    180deg,
+    #c0a878 0, #c0a878 calc(1 * var(--gp)),
+    #b8b098 calc(1 * var(--gp)), #b8b098 calc(2 * var(--gp))
+  );
+}
+
 .material-symbols-outlined {
   font-family: "Material Symbols Outlined";
   font-weight: normal;

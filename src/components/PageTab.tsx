@@ -31,7 +31,7 @@ export default function PageTab({
 
   return (
     <div
-      className={`absolute left-0 ${exiting ? "pagetab-exit" : entering ? "pagetab-enter" : ""}`}
+      className={`absolute left-0 z-1 ${exiting ? "pagetab-exit" : entering ? "pagetab-enter" : ""}`}
       style={{
         top: s(topOffset),
         width: s(88),

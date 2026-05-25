@@ -106,7 +106,7 @@ export default function PageSkeleton({
             bottom: s(4),
             color: "white",
             fontSize: s(10),
-            textShadow: "1px 1px 0 rgba(0,0,0,0.4)",
+            textShadow: `${s(1)} 0 0 rgba(0,0,0,0.4)`,
           }}
         >
           RAVINDU GUNASEKARA

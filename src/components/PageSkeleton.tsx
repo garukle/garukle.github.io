@@ -1,21 +1,31 @@
-import { useState } from 'react'
-import PageTab from './PageTab'
+import { useState } from "react";
+import PageTab from "./PageTab";
 
 interface Props {
-  label: string
-  color: string
-  borderTop: string
-  borderRight: string
-  borderBottom: string
-  onBack: () => void
-  children: React.ReactNode
-  entering?: boolean
-  exiting?: boolean
+  label: string;
+  color: string;
+  borderTop: string;
+  borderRight: string;
+  borderBottom: string;
+  onBack: () => void;
+  children: React.ReactNode;
+  entering?: boolean;
+  exiting?: boolean;
 }
 
-export default function PageSkeleton({ label, color, borderTop, borderRight, borderBottom, onBack, children, entering, exiting }: Props) {
-  const s = (n: number) => `calc(${n} * var(--gp))`
-  const [hovering, setHovering] = useState(false)
+export default function PageSkeleton({
+  label,
+  color,
+  borderTop,
+  borderRight,
+  borderBottom,
+  onBack,
+  children,
+  entering,
+  exiting,
+}: Props) {
+  const s = (n: number) => `calc(${n} * var(--gp))`;
+  const [hovering, setHovering] = useState(false);
 
   return (
     <div className="absolute inset-0">
@@ -31,25 +41,22 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
       />
 
       {/* Page content */}
-      <div 
-        className="absolute left-0 right-0 overflow-auto" 
-        style={{ top: s(24), bottom: s(16) }}
-      >
+      <div className="absolute inset-0" style={{ bottom: s(16) }}>
         {children}
       </div>
 
       {/* Bottom bar */}
-      <div 
-        className={`absolute left-0 right-0 bottom-0 overflow-hidden ${entering ? 'bottombar-enter' : exiting ? 'bottombar-exit' : ''}`} 
+      <div
+        className={`absolute left-0 right-0 bottom-0 overflow-hidden ${entering ? "bottombar-enter" : exiting ? "bottombar-exit" : ""}`}
         style={{ height: s(16) }}
       >
-        <div 
-          className="absolute left-0 right-0 top-0" 
-          style={{ height: s(1), background: '#68e8b0' }}
+        <div
+          className="absolute left-0 right-0 top-0"
+          style={{ height: s(1), background: "#68e8b0" }}
         />
-        <div 
-          className="absolute left-0 right-0" 
-          style={{ top: s(1), bottom: 0, background: '#20d890' }} 
+        <div
+          className="absolute left-0 right-0"
+          style={{ top: s(1), bottom: 0, background: "#20d890" }}
         />
 
         {/* B button */}
@@ -57,12 +64,12 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
           className="absolute flex items-center justify-center rounded-full transition-all"
           style={{
             left: s(8),
-            top: '50%',
-            transform: `translateY(-50%) ${hovering ? 'scale(1.1)' : 'scale(1)'}`,
+            top: "50%",
+            transform: `translateY(-50%) ${hovering ? "scale(1.1)" : "scale(1)"}`,
             width: s(7),
             height: s(7),
             border: `${s(1)} solid white`,
-            color: 'white',
+            color: "white",
             fontSize: s(7),
             lineHeight: 1,
             textShadow: `${s(0.75)} 0 0 rgba(0,0,0,1)`,
@@ -82,7 +89,7 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
             left: s(17),
             top: s(4),
             bottom: s(3),
-            color: 'white',
+            color: "white",
             fontSize: s(10),
             textShadow: `${s(0.75)} 0 0 rgba(0,0,0,1)`,
           }}
@@ -97,14 +104,14 @@ export default function PageSkeleton({ label, color, borderTop, borderRight, bor
             right: s(11),
             top: s(5),
             bottom: s(4),
-            color: 'white',
+            color: "white",
             fontSize: s(10),
-            textShadow: '1px 1px 0 rgba(0,0,0,0.4)',
+            textShadow: "1px 1px 0 rgba(0,0,0,0.4)",
           }}
         >
           RAVINDU GUNASEKARA
         </span>
       </div>
     </div>
-  )
+  );
 }

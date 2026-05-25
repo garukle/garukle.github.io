@@ -1,92 +1,176 @@
-@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mozilla+Headline:wght@200..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap");
 @import "tailwindcss";
 
 * {
-  font-family: 'Jersey 10', monospace;
+  font-family: "Jersey 10", monospace;
   font-weight: lighter;
 }
 
 @font-face {
-  font-family: 'Material Symbols Outlined';
-  src: url('./assets/fonts/Material_Symbols_Outlined/MaterialSymbolsOutlined-VariableFont_FILL,GRAD,opsz,wght.ttf') format('truetype');
+  font-family: "Material Symbols Outlined";
+  src: url("./assets/fonts/Material_Symbols_Outlined/MaterialSymbolsOutlined-VariableFont_FILL,GRAD,opsz,wght.ttf")
+    format("truetype");
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Material Symbols Rounded';
-  src: url('./assets/fonts/Material_Symbols_Rounded/MaterialSymbolsRounded-VariableFont_FILL,GRAD,opsz,wght.ttf') format('truetype');
+  font-family: "Material Symbols Rounded";
+  src: url("./assets/fonts/Material_Symbols_Rounded/MaterialSymbolsRounded-VariableFont_FILL,GRAD,opsz,wght.ttf")
+    format("truetype");
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Material Symbols Sharp';
-  src: url('./assets/fonts/Material_Symbols_Sharp/MaterialSymbolsSharp-VariableFont_FILL,GRAD,opsz,wght.ttf') format('truetype');
+  font-family: "Material Symbols Sharp";
+  src: url("./assets/fonts/Material_Symbols_Sharp/MaterialSymbolsSharp-VariableFont_FILL,GRAD,opsz,wght.ttf")
+    format("truetype");
   font-style: normal;
 }
 
 @keyframes slideUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-100%); opacity: 0; }
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
 }
 @keyframes slideDown {
-  from { transform: translateY(-100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 @keyframes slideInBottom {
-  from { transform: translateY(100%); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 @keyframes slideOutBottom {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(100%); opacity: 0; }
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 }
 
-.topbar-exit { animation: slideUp 0.4s ease-in forwards; }
-.topbar-enter { animation: slideDown 0.4s ease-out forwards; }
-.bottombar-enter { animation: slideInBottom 0.4s ease-out forwards; }
-.bottombar-exit { animation: slideOutBottom 0.4s ease-in forwards; }
+.topbar-exit {
+  animation: slideUp 0.4s ease-in forwards;
+}
+.topbar-enter {
+  animation: slideDown 0.4s ease-out forwards;
+}
+.bottombar-enter {
+  animation: slideInBottom 0.4s ease-out forwards;
+}
+.bottombar-exit {
+  animation: slideOutBottom 0.4s ease-in forwards;
+}
 
 @keyframes slideOutRight {
-  from { transform: translateX(0); opacity: 1; }
-  to { transform: translateX(100%); opacity: 0; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
 }
 @keyframes slideInRight {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.sectiontabs-exit { animation: slideOutRight 0.4s ease-in forwards; }
-.sectiontabs-enter { animation: slideInRight 0.4s ease-out forwards; }
+.sectiontabs-exit {
+  animation: slideOutRight 0.4s ease-in forwards;
+}
+.sectiontabs-enter {
+  animation: slideInRight 0.4s ease-out forwards;
+}
 
 @keyframes slideOutLeft {
-  from { transform: translateX(0); opacity: 1; }
-  to { transform: translateX(-100%); opacity: 0; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 }
 @keyframes slideInLeft {
-  from { transform: translateX(-100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
-.pagetab-exit { animation: slideOutLeft 0.4s ease-in forwards; }
-.pagetab-enter { animation: slideInLeft 0.4s ease-out forwards; }
+.pagetab-exit {
+  animation: slideOutLeft 0.4s ease-in forwards;
+}
+.pagetab-enter {
+  animation: slideInLeft 0.4s ease-out forwards;
+}
 
 @keyframes fadeToBlack {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes fadeFromBlack {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-.fade-to-black { animation: fadeToBlack 0.3s ease-in forwards; }
-.fade-from-black { animation: fadeFromBlack 0.3s ease-out forwards; }
+.fade-to-black {
+  animation: fadeToBlack 0.3s ease-in forwards;
+}
+.fade-from-black {
+  animation: fadeFromBlack 0.3s ease-out forwards;
+}
 
 @keyframes tabPulse {
-  0%, 100% { filter: brightness(1) saturate(1); }
-  50% { filter: brightness(1.1) saturate(0.7); }
+  0%,
+  100% {
+    filter: brightness(1) saturate(1);
+  }
+  50% {
+    filter: brightness(1.1) saturate(0.7);
+  }
 }
 
 .tab-pulse {
@@ -94,25 +178,37 @@
 }
 
 @keyframes bgScroll {
-  from { background-position: 0 0; }
-  to { background-position: calc(-4 * var(--gp)) 0; }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: calc(-4 * var(--gp)) 0;
+  }
 }
 
 .pokenav-bg {
   background-color: #d8f8f0;
   background-image:
-    linear-gradient(to right, #f8f8f8 calc(2 * var(--gp)), transparent calc(2 * var(--gp))),
-    linear-gradient(to bottom, #f8f8f8 calc(2 * var(--gp)), transparent calc(2 * var(--gp)));
+    linear-gradient(
+      to right,
+      #f8f8f8 calc(2 * var(--gp)),
+      transparent calc(2 * var(--gp))
+    ),
+    linear-gradient(
+      to bottom,
+      #f8f8f8 calc(2 * var(--gp)),
+      transparent calc(2 * var(--gp))
+    );
   background-size: calc(4 * var(--gp)) calc(4 * var(--gp));
   background-position: 0 calc(1 * var(--gp));
   animation: bgScroll 0.1s linear infinite;
 }
 
 .material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
+  font-family: "Material Symbols Outlined";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -123,10 +219,10 @@
 }
 
 .material-symbols-rounded {
-  font-family: 'Material Symbols Rounded';
+  font-family: "Material Symbols Rounded";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
@@ -137,10 +233,10 @@
 }
 
 .material-symbols-sharp {
-  font-family: 'Material Symbols Sharp';
+  font-family: "Material Symbols Sharp";
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px; /* Preferred icon size */
   display: inline-block;
   line-height: 1;
   text-transform: none;
